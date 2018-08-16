@@ -2,6 +2,7 @@ import express from 'express';
 import path from 'path';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 
 // import routes from './routes';
 import indexController from './controller/index';
@@ -14,6 +15,7 @@ app.disable('x-powered-by');
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'pug');
 
+app.use(cors())
 app.use(
   logger('dev', {
     skip: () => app.get('env') === 'test'
